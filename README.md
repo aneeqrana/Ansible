@@ -8,7 +8,11 @@ Ansible is an open-source automation tool that can be used for a variety of task
 
 CI/CD is a set of practices that aims to streamline the process of building, testing, and deploying software. Ansible can be used in the CI/CD pipeline to automate the deployment of software and ensure that it is consistent across different environments.
 
-Ansible uses modules to perform various tasks. Modules are reusable pieces of code that can be used to automate specific tasks. For example, there are modules for managing users and groups, installing software packages, and configuring network settings.
+Ansible uses modules to perform various tasks. 
+
+Modules are reusable pieces of code that can be used to automate specific tasks. For example, there are modules for managing users and groups, installing software packages, and configuring network settings.
+
+ansible module is a command or set of commands to be executed on the client side 
 
 Ansible includes a large number of built-in modules, and it is also possible to write custom modules if needed. When using Ansible, modules are called with parameters, which can be used to customize their behavior. For example, when installing a package using the "apt" module, parameters can be used to specify the package name and version.
 
