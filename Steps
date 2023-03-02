@@ -1,0 +1,54 @@
+The first step to do her is to create a master server for ansbile 
+
+once the server is created you need to add three servers with this server image from AWS platform 
+
+While launching the servers you need to use the same key for better and to make it easier for you to manage that's ho I have done it you can do the other way now copy that keyfile lets say in my case its 
+
+devops.pem   cat this key copy the content
+
+ssh the master server go to ~/.ssh directory create a file maybe ansible_key paste the key content this will allow you to access the slave servers. 
+
+Once done you can test it through 
+
+sudo ssh -i ~/.ssh/ansible_key ubuntu@serverIP 
+
+
+Now create inventory hosts file in ansible directory
+
+with syntax
+
+
+[servers]
+server1 ansible_host=107.23.142.**
+server2 ansible_host=54.174.120.**
+server3 ansible_host=100.26.230.**
+
+
+[all:vars]
+ansible_python_interpreter=/usr/bin/python3
+
+
+
+to check if it is correct use the command 
+
+ansible-inventory --list -y 
+
+or with the path of your ansible directory like this 
+
+ansible-inventory --list -y -i /root/ansible
+
+now to ping the clients 
+
+ansible all -m ping -i /home/ubuntu/ansible/hosts --private-key=~/.ssh/ansible_key
+
+you might face error sometimes so try to ssh the slave server with the command 
+
+ssh -i ~/.ssh/ansible_key ubuntu@107.23.142.165
+
+now if you want to check the free space on all the slave servers you can use the command
+
+ansible all -a "df -hT" -i /home/ubuntu/ansible/hosts --private-key=~/.ssh/ansible_key
+
+and for free RAM
+
+ansible all -a "free -h" -i /home/ubuntu/ansible/hosts --private-key=~/.ssh/ansible_key
