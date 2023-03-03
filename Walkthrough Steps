@@ -94,3 +94,10 @@ ansible-playbook install_docker.yml -i /home/ubuntu/ansible/hosts --private-key=
 
 
 it will install docker on the servers all the scripts here are tested and run successfully. 
+
+
+just incase if you face error like the servers are not updated you can use this command to update all the servers
+
+ansible all -m apt -a "upgrade=yes update_cache=yes cache_valid_time=86400" --become  -i /home/ubuntu/ansible/hosts --private-key=~/.ssh/ansible_key
+
+
